@@ -590,10 +590,10 @@ export function Contact({ data }: { data: PortfolioData }) {
                 className={field}
                 value={values.name}
                 onChange={(e) => setValues({ ...values, name: e.target.value })}
-                aria-invalid={!!errors.name}
+                aria-invalid={!!errors['name']}
                 required
               />
-              {errors.name ? <p className="mt-2 text-xs text-destructive">{errors.name}</p> : null}
+              {errors['name'] ? <p className="mt-2 text-xs text-destructive">{errors['name']}</p> : null}
             </div>
             <div>
               <label htmlFor="email" className="label-xs">
@@ -605,10 +605,10 @@ export function Contact({ data }: { data: PortfolioData }) {
                 className={field}
                 value={values.email}
                 onChange={(e) => setValues({ ...values, email: e.target.value })}
-                aria-invalid={!!errors.email}
+                aria-invalid={!!errors['email']}
                 required
               />
-              {errors.email ? <p className="mt-2 text-xs text-destructive">{errors.email}</p> : null}
+              {errors['email'] ? <p className="mt-2 text-xs text-destructive">{errors['email']}</p> : null}
             </div>
             <div className="sm:col-span-2">
               <label htmlFor="subject" className="label-xs">
@@ -631,10 +631,10 @@ export function Contact({ data }: { data: PortfolioData }) {
                 className={`${field} resize-none`}
                 value={values.message}
                 onChange={(e) => setValues({ ...values, message: e.target.value })}
-                aria-invalid={!!errors.message}
+                aria-invalid={!!errors['message']}
                 required
               />
-              {errors.message ? <p className="mt-2 text-xs text-destructive">{errors.message}</p> : null}
+              {errors['message'] ? <p className="mt-2 text-xs text-destructive">{errors['message']}</p> : null}
             </div>
           </div>
 
