@@ -189,8 +189,13 @@ export type ContactMessage = {
   created_at: string;
 };
 
+// The generated client is strongly typed per-table; these helpers are generic
+// over table names, so they use a loosely typed view of the same client.
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+const db = supabase as any;
+
 async function list<T>(table: string, order = "display_order"): Promise<T[]> {
-  const { data, error } = await supabase
+  const { data, error } = await db
     .from(table)
     .select("*")
     .order(order, { ascending: true })
@@ -251,7 +256,21 @@ export const portfolioQuery = queryOptions({
   },
 });
 
-export type PortfolioData = Awaited<ReturnType<typeof portfolioQuery.queryFn>>;
+export type PortfolioData = {
+  profile: Profile | null;
+  settings: SiteSettings | null;
+  categories: SkillCategory[];
+  skills: Skill[];
+  education: Education[];
+  experiences: Experience[];
+  leadership: Leadership[];
+  projects: Project[];
+  certifications: Certification[];
+  achievements: Achievement[];
+  positions: Position[];
+  resume: Resume | null;
+  socials: SocialLink[];
+};
 
 /** Admin-side: reads every row regardless of visibility (RLS allows admins). */
 export function adminListQuery<T>(table: string) {
