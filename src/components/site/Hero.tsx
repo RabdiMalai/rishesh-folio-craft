@@ -113,8 +113,8 @@ export function Hero({ data }: { data: PortfolioData }) {
           </Stage>
         </div>
 
-        <Stage step={step} delay={5}>
-          <div className="lg:col-span-4">
+        <div className="lg:col-span-4">
+          <Stage step={step} delay={5}>
             {image ? (
               <img
                 src={image}
@@ -136,8 +136,8 @@ export function Hero({ data }: { data: PortfolioData }) {
                 </div>
               </div>
             )}
-          </div>
-        </Stage>
+          </Stage>
+        </div>
       </div>
     </section>
   );
