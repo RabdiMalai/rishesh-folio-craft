@@ -260,6 +260,7 @@ export function CrudManager({
   searchKeys,
   singleton,
   renderExtra,
+  order = "display_order",
 }: {
   table: string;
   title: string;
@@ -270,9 +271,10 @@ export function CrudManager({
   searchKeys?: string[];
   singleton?: boolean;
   renderExtra?: (row: Row) => ReactNode;
+  order?: string;
 }) {
   const queryClient = useQueryClient();
-  const { data, isPending, isError } = useTable(table);
+  const { data, isPending, isError } = useTable(table, order);
   const [editing, setEditing] = useState<Row | null>(null);
   const [creating, setCreating] = useState(false);
   const [confirmId, setConfirmId] = useState<string | null>(null);
