@@ -17,6 +17,7 @@ import { Route as AdminCertificationsRouteImport } from './routes/admin.certific
 import { Route as AdminEducationRouteImport } from './routes/admin.education'
 import { Route as AdminExperienceRouteImport } from './routes/admin.experience'
 import { Route as AdminLeadershipRouteImport } from './routes/admin.leadership'
+import { Route as AdminMessagesRouteImport } from './routes/admin.messages'
 import { Route as AdminPositionsRouteImport } from './routes/admin.positions'
 import { Route as AdminProfileRouteImport } from './routes/admin.profile'
 import { Route as AdminProjectsRouteImport } from './routes/admin.projects'
@@ -65,6 +66,11 @@ const AdminLeadershipRoute = AdminLeadershipRouteImport.update({
   path: '/leadership',
   getParentRoute: () => AdminRoute,
 } as any)
+const AdminMessagesRoute = AdminMessagesRouteImport.update({
+  id: '/messages',
+  path: '/messages',
+  getParentRoute: () => AdminRoute,
+} as any)
 const AdminPositionsRoute = AdminPositionsRouteImport.update({
   id: '/positions',
   path: '/positions',
@@ -109,6 +115,7 @@ export interface FileRoutesByFullPath {
   '/admin/education': typeof AdminEducationRoute
   '/admin/experience': typeof AdminExperienceRoute
   '/admin/leadership': typeof AdminLeadershipRoute
+  '/admin/messages': typeof AdminMessagesRoute
   '/admin/positions': typeof AdminPositionsRoute
   '/admin/profile': typeof AdminProfileRoute
   '/admin/projects': typeof AdminProjectsRoute
@@ -125,6 +132,7 @@ export interface FileRoutesByTo {
   '/admin/education': typeof AdminEducationRoute
   '/admin/experience': typeof AdminExperienceRoute
   '/admin/leadership': typeof AdminLeadershipRoute
+  '/admin/messages': typeof AdminMessagesRoute
   '/admin/positions': typeof AdminPositionsRoute
   '/admin/profile': typeof AdminProfileRoute
   '/admin/projects': typeof AdminProjectsRoute
@@ -143,6 +151,7 @@ export interface FileRoutesById {
   '/admin/education': typeof AdminEducationRoute
   '/admin/experience': typeof AdminExperienceRoute
   '/admin/leadership': typeof AdminLeadershipRoute
+  '/admin/messages': typeof AdminMessagesRoute
   '/admin/positions': typeof AdminPositionsRoute
   '/admin/profile': typeof AdminProfileRoute
   '/admin/projects': typeof AdminProjectsRoute
@@ -162,6 +171,7 @@ export interface FileRouteTypes {
     | '/admin/education'
     | '/admin/experience'
     | '/admin/leadership'
+    | '/admin/messages'
     | '/admin/positions'
     | '/admin/profile'
     | '/admin/projects'
@@ -178,6 +188,7 @@ export interface FileRouteTypes {
     | '/admin/education'
     | '/admin/experience'
     | '/admin/leadership'
+    | '/admin/messages'
     | '/admin/positions'
     | '/admin/profile'
     | '/admin/projects'
@@ -195,6 +206,7 @@ export interface FileRouteTypes {
     | '/admin/education'
     | '/admin/experience'
     | '/admin/leadership'
+    | '/admin/messages'
     | '/admin/positions'
     | '/admin/profile'
     | '/admin/projects'
@@ -268,6 +280,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AdminLeadershipRouteImport
       parentRoute: typeof AdminRoute
     }
+    '/admin/messages': {
+      id: '/admin/messages'
+      path: '/messages'
+      fullPath: '/admin/messages'
+      preLoaderRoute: typeof AdminMessagesRouteImport
+      parentRoute: typeof AdminRoute
+    }
     '/admin/positions': {
       id: '/admin/positions'
       path: '/positions'
@@ -326,6 +345,7 @@ interface AdminRouteChildren {
   AdminEducationRoute: typeof AdminEducationRoute
   AdminExperienceRoute: typeof AdminExperienceRoute
   AdminLeadershipRoute: typeof AdminLeadershipRoute
+  AdminMessagesRoute: typeof AdminMessagesRoute
   AdminPositionsRoute: typeof AdminPositionsRoute
   AdminProfileRoute: typeof AdminProfileRoute
   AdminProjectsRoute: typeof AdminProjectsRoute
@@ -342,6 +362,7 @@ const AdminRouteChildren: AdminRouteChildren = {
   AdminEducationRoute: AdminEducationRoute,
   AdminExperienceRoute: AdminExperienceRoute,
   AdminLeadershipRoute: AdminLeadershipRoute,
+  AdminMessagesRoute: AdminMessagesRoute,
   AdminPositionsRoute: AdminPositionsRoute,
   AdminProfileRoute: AdminProfileRoute,
   AdminProjectsRoute: AdminProjectsRoute,
