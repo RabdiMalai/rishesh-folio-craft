@@ -31,7 +31,7 @@ const NAV: { to: string; label: string; exact?: boolean }[] = [
   { to: "/admin/messages", label: "Messages" },
   { to: "/admin/social", label: "Social Links" },
   { to: "/admin/settings", label: "Site Settings" },
-] as const;
+];
 
 function AdminLayout() {
   return (
