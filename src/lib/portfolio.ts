@@ -222,7 +222,7 @@ export const portfolioQuery = queryOptions({
       socials,
     ] = await Promise.all([
       list<Profile>("profiles"),
-      list<SiteSettings>("site_settings"),
+      list<SiteSettings>("site_settings", null),
       list<SkillCategory>("skill_categories"),
       list<Skill>("skills"),
       list<Education>("education"),
