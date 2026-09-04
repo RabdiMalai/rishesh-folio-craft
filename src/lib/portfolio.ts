@@ -194,12 +194,10 @@ export type ContactMessage = {
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 const db = supabase as any;
 
-async function list<T>(table: string, order = "display_order"): Promise<T[]> {
-  const { data, error } = await db
-    .from(table)
-    .select("*")
-    .order(order, { ascending: true })
-    .order("created_at", { ascending: true });
+async function list<T>(table: string, order: string | null = "display_order"): Promise<T[]> {
+  let query = db.from(table).select("*");
+  if (order) query = query.order(order, { ascending: true });
+  const { data, error } = await query.order("created_at", { ascending: true });
   if (error) throw error;
   return (data ?? []) as T[];
 }
