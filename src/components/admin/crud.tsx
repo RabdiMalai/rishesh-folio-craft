@@ -31,15 +31,13 @@ export type Field = {
   full?: boolean;
 };
 
-export function useTable(table: string, order = "display_order") {
+export function useTable(table: string, order: string | null = "display_order") {
   return useQuery({
     queryKey: ["admin", table],
     queryFn: async () => {
-      const { data, error } = await db
-        .from(table)
-        .select("*")
-        .order(order, { ascending: true })
-        .order("created_at", { ascending: true });
+      let query = db.from(table).select("*");
+      if (order) query = query.order(order, { ascending: true });
+      const { data, error } = await query.order("created_at", { ascending: true });
       if (error) throw error;
       return (data ?? []) as Row[];
     },
@@ -271,7 +269,7 @@ export function CrudManager({
   searchKeys?: string[];
   singleton?: boolean;
   renderExtra?: (row: Row) => ReactNode;
-  order?: string;
+  order?: string | null;
 }) {
   const queryClient = useQueryClient();
   const { data, isPending, isError } = useTable(table, order);
