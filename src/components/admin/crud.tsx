@@ -31,7 +31,7 @@ export type Field = {
   full?: boolean;
 };
 
-export function useTable(table: string, order = "display_order") {
+export function useTable(table: string, order: string | null = "display_order") {
   return useQuery({
     queryKey: ["admin", table],
     queryFn: async () => {
