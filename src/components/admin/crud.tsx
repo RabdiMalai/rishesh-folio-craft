@@ -269,7 +269,7 @@ export function CrudManager({
   searchKeys?: string[];
   singleton?: boolean;
   renderExtra?: (row: Row) => ReactNode;
-  order?: string;
+  order?: string | null;
 }) {
   const queryClient = useQueryClient();
   const { data, isPending, isError } = useTable(table, order);
