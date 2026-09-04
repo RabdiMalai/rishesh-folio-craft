@@ -19,6 +19,7 @@ function SettingsPage() {
   return (
     <CrudManager
       table="site_settings"
+      order={null}
       title="Site Settings"
       description="Metadata, footer and defaults for the public site."
       fields={FIELDS}
